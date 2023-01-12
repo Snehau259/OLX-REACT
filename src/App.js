@@ -1,7 +1,8 @@
 import './App.css';
 import { db } from './firebase/config';
-import { collection, getDocs ,addDoc} from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { useState } from 'react';
+import { async } from '@firebase/util';
 
 
 function App() {
@@ -30,19 +31,24 @@ function App() {
       )
 
       }
-      <button onClick={async () => { 
+      <button onClick={async () => {
         // const db = getFirestore(Firebase);
-const prodtAdd = await addDoc(collection(db, "products"), { 
-          Name: "Mi", 
-          Price: 1200 ,
-          Type:"mobile"
-        }); 
-        console.log("Document written with ID: ", prodtAdd.id); 
- 
-        return prodtAdd; 
- 
+        const prodtAdd = await addDoc(collection(db, "products"), {
+          Name: "Mi",
+          Price: 1200,
+          Type: "mobile"
+        });
+        console.log("Document written with ID: ", prodtAdd.id);
+
+        return prodtAdd;
+
       }} > Add data</button>
-      
+
+      <button onClick={async()=>{
+        const deleteData = await deleteDoc(doc(db, "products", "J7DgNWuGcdRxMwupDWLU")); 
+      console.log("deleted"); 
+      return deleteData;} }>Delete data</button>
+
 
     </div>
   );
