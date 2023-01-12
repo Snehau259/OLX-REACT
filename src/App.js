@@ -1,6 +1,7 @@
 import './App.css';
 import { db } from './firebase/config';
 import { collection, getDocs, addDoc, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 import { async } from '@firebase/util';
 
@@ -57,6 +58,23 @@ function App() {
         console.log("updated");
         return updateData;
       }}>Update data</button>
+
+      <button onClick={() => {
+
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, 'abc@gmail.com', '123456')
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+            console.log('new user added')
+          })
+          // .catch((error) => {
+          //   const errorCode = error.code;
+          //   const errorMessage = error.message;
+          //   // ..
+          // });
+      }}>Sign Up</button>
 
 
     </div>
