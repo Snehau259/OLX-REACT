@@ -1,6 +1,6 @@
 import './App.css';
 import { db } from './firebase/config';
-import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useState } from 'react';
 import { async } from '@firebase/util';
 
@@ -44,10 +44,19 @@ function App() {
 
       }} > Add data</button>
 
-      <button onClick={async()=>{
-        const deleteData = await deleteDoc(doc(db, "products", "J7DgNWuGcdRxMwupDWLU")); 
-      console.log("deleted"); 
-      return deleteData;} }>Delete data</button>
+      <button onClick={async () => {
+        const deleteData = await deleteDoc(doc(db, "products", "J7DgNWuGcdRxMwupDWLU"));
+        console.log("deleted");
+        return deleteData;
+      }}>Delete data</button>
+
+      <button onClick={async () => {
+        const updateData = await setDoc(doc(db, "products", "100"), {
+          name: 'updated'
+        })
+        console.log("updated");
+        return updateData;
+      }}>Update data</button>
 
 
     </div>
