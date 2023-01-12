@@ -1,6 +1,6 @@
 import './App.css';
 import { db } from './firebase/config';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs ,addDoc} from "firebase/firestore";
 import { useState } from 'react';
 
 
@@ -30,6 +30,19 @@ function App() {
       )
 
       }
+      <button onClick={async () => { 
+        // const db = getFirestore(Firebase);
+const prodtAdd = await addDoc(collection(db, "products"), { 
+          Name: "Mi", 
+          Price: 1200 ,
+          Type:"mobile"
+        }); 
+        console.log("Document written with ID: ", prodtAdd.id); 
+ 
+        return prodtAdd; 
+ 
+      }} > Add data</button>
+      
 
     </div>
   );
