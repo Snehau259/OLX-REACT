@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Signup from './Components/Signup/Signup'
-
+import Login from './Components/Login/Login'
 /**
  * ?  =====Import Components=====
  */
@@ -18,6 +18,10 @@ function App() {
 
         <Route exact path='/signup'>
           <Signup />
+        </Route>
+
+        <Route exact path='/login'>
+          <Login />
         </Route>
       </Router>
     </div>
