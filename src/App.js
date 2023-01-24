@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Signup from './Components/Signup/Signup'
 import Login from './Components/Login/Login'
+import Create from './Components/Create/Create'
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
 import Home from './Pages/Home';
 
@@ -19,7 +20,7 @@ function App() {
       console.log('error is' + error.message);
     }
   });
-  
+
   return (
     <div>
       <Router>
@@ -34,6 +35,11 @@ function App() {
         <Route exact path='/login'>
           <Login />
         </Route>
+
+        <Route exact path='/create'>
+          <Create />
+        </Route>
+
       </Router>
     </div>
   );
